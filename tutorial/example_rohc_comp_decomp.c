@@ -60,6 +60,7 @@ int main(int argc, char **argv)
     seed = time(NULL);
     srand(seed);
     printf("This program will compress one single IPv4 packet\n");
+    printf(FAKE_PAYLOAD);
     printf("\nCreate the ROHC compressor\n");
     compressor = rohc_comp_new2(ROHC_SMALL_CID, ROHC_SMALL_CID_MAX, gen_random_num, NULL); 
     if (compressor == NULL)
@@ -147,6 +148,12 @@ int main(int argc, char **argv)
         {
             printf("IP packet resulting from the ROHC decompression:\n");
             dump_packet(ip_packet_decomp);
+            size_t idx;
+            for (idx=20; idx<ip_packet_decomp.len; ++idx)
+            {
+                printf("%c", rohc_buf_byte_at(ip_packet_decomp, idx));
+            }
+            printf("\n");
         }
         else
         {
