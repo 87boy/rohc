@@ -128,7 +128,7 @@ typedef void (*rohc_trace_callback2_t) (void *const priv_ctxt,
 #else
 	/* Use 'printf' format in other cases, because old GCC versions
 	 * and Clang do not recognize 'gnu_printf' format */
-	__attribute__((format(printf, 5, 6)));
+	__attribute__((format(__printf__, 5, 6)));
 #endif
 
 
