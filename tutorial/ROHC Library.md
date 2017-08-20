@@ -140,6 +140,10 @@ Get cmocka source code
     wget https://cmocka.org/files/1.1/cmocka-1.1.1.tar.xz --no-check-certificate
     wget https://cmocka.org/files/1.1/cmocka-1.1.1.tar.xz.asc --no-check-certificate
     tar xvJf cmocka-1.1.1.tar.xz
+    
+    cd cmocka/build/
+    cmake ./../ -DCMAKE_INSTALL_PREFIX=/usr/local/ -DCMAKE_BUILD_TYPE=Release
+    cmake ~/git/cmocka/ -DCMAKE_INSTALL_PREFIX=/usr/local/ -DCMAKE_BUILD_TYPE=Release
 
 make ROHC
 
@@ -151,6 +155,7 @@ make ROHC
     $ sudo yum install pkgconfig      # CentOS
     # ERROR: cmocka library/headers not found
     [pkg-config on CentOS](https://hamiltonwongcpp.wordpress.com/2015/11/28/pkg-config-on-centos/)
+    sudo find / -iname cmocka.pc
     sudo cp /usr/lib/pkgconfig/cmocka.pc /usr/lib64/pkgconfig/
     
     # error while loading shared libraries cannot open shared object file no such file or directory
@@ -160,13 +165,13 @@ make ROHC
     include ld.so.conf.d/*.conf
     $ ll /etc/ld.so.conf.d/
     $ su root
-    # echo "/usr/local/lib" >> /etc/ld.so.conf
+    # echo "/usr/local/lib/" >> /etc/ld.so.conf
     # exit
     $ sudo ldconfig
     $ cat /etc/ld.so.conf
     
-    $ ./configure --prefix=/usr/local # OR
-    $ ./configure --prefix=/usr/local \
+    $ ./configure --prefix=/usr/local/ # OR
+    $ ./configure --prefix=/usr/local/ \
     --enable-rohc-debug \
     --enable-fail-on-warning \
     --enable-fortify-sources \
@@ -188,6 +193,9 @@ test ROHC
     $ ./configure --prefix=/usr/local
     $ make
     $ sudo make install
+    $ sudo find / -iname cmocka.pc
+    $ sudo cp /usr/local/lib/pkgconfig/rohc.pc /usr/lib64/pkgconfig/
+    $ sudo ldconfig
     
     [pcap example](https://github.com/markofu/hackeire)
 
