@@ -8,6 +8,14 @@
 #include <time.h>
 #include <netinet/ip.h>
 
+#if HAVE_WINSOCK2_H == 1
+#include <winsock2.h>
+#endif
+
+#if HAVEARPA_INET_H == 1
+#include <arpa/inet.h>
+#endif
+
 #include <errno.h>
 #include <assert.h>
 #include <stdarg.h>
@@ -67,7 +75,7 @@ static void print_rohc_traces(void *const priv_ctxt __attribute__((unused)),
     }
 }
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
     struct rohc_comp *compressor = NULL;
     rohc_status_t rohc_status;
@@ -151,7 +159,6 @@ int main(int argc, char **argv)
             rohc_comp_free(compressor);
             return 1;
         }
-
         /* dump the ROHC packet on terminal */
         //printf("ROHC packet resulting from the ROHC compression:\n");
         dump_packet(rohc_packet);
