@@ -144,7 +144,7 @@ int main(int argc, char *argv[])
         ip_packet.len += sizeof(struct udphdr);
         udp = (struct udphdr *) rohc_buf_data(ip_packet);
         udp->source = htons(1234);
-        udp->source = htons(1234);
+        udp->dest = htons(1234);
         udp->len = htons(sizeof(struct udphdr) + payload_len);
         udp->check = 0;
         rohc_buf_pull(&ip_packet, sizeof(struct udphdr));
