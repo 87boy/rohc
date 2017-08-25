@@ -192,7 +192,7 @@ test ROHC
     [Lynx 2.8.8](http://lynx.invisible-island.net/release/)
     $ ./simple_generate.sh --prefix=/usr/local
     $ ./configure --prefix=/usr/local
-    $ make
+    $ make all
     $ sudo make install
     $ sudo find / -iname cmocka.pc
     $ sudo cp /usr/local/lib/pkgconfig/rohc.pc /usr/lib64/pkgconfig/
@@ -202,9 +202,21 @@ test ROHC
 
     $ gcc -o example_rohc_comp_decomp -Wall $(pkg-config rohc --cflags) example_rohc_comp_decomp.c $(pkg-config rohc --libs)
     $ gcc -o example_rohc_comp_decomp -Wall -I/usr/local/include example_rohc_comp_decomp.c -L/usr/local/lib -lrohc
-    $ gcc -o example_rohc_comp_decomp -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ example_rohc_comp_decomp.c -L./../src/.libs/ -lrohc
     
+    $ gcc -o example_rohc_comp_decomp -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ example_rohc_comp_decomp.c -L./../src/.libs/ -lrohc
     $ gcc -o generate_ipv4_stream -Wall -I/usr/local/include -I./../ -I./../src/common/ generate_ipv4_stream.c -L/usr/local/lib -lrohc
+    
+    $ gcc -o generate_ipv4_stream -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ -I./../ generate_ipv4_stream.c -L./../src/.libs/ -lrohc
+    
+    $ gcc -o generate_ipv4_udp_stream -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ -I./../ generate_ipv4_udp_stream.c -L./../src/.libs/ -lrohc
+    
+    $ gcc -o generate_udp_ipv4_stream -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ -I./../ generate_udp_ipv4_stream.c -L./../src/.libs/ -lrohc
+    
+    $ gcc -o generate_ipv6_stream -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ -I./../ generate_ipv6_stream.c -L./../src/.libs/ -lrohc
+    
+    $ gcc -o generate_ipv6_udp_stream -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ -I./../ generate_ipv6_udp_stream.c -L./../src/.libs/ -lrohc
+    
+    $ gcc -o generate_udp_ipv6_stream -Wall -I./../src/common/  -I./../src/comp/ -I./../src/decomp/ -I./../ generate_udp_ipv6_stream.c -L./../src/.libs/ -lrohc
 
 ## Reference
 
