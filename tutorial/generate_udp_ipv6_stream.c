@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
         ipv6->tc2 = 0;
         ipv6->flow1 = 0;
         ipv6->flow2 = htons(0);
-        ipv6->plen = htons(18);
+        ipv6->plen = htons(sizeof(struct udphdr) + payload_len);
         ipv6->nh = IPPROTO_UDP;
         ipv6->hl = 64;
         uint8_t idx;

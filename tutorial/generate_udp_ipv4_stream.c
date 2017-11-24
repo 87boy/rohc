@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
     struct rohc_comp *compressor = NULL;
     rohc_status_t rohc_status;
 
-    uint8_t max_packets = 50;
+    uint8_t max_packets = 5;
     unsigned long counter;
 
     printf("This program will compress several IPv4 packets\n");
@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
     /* release the ROHC compressor when you do not need it anymore */
     printf("Destroy the ROHC compressor\n");
     rohc_comp_free(compressor);
-
+    printf("size of ipv4_hdr = %lu\n", sizeof(struct ipv4_hdr));
     printf("The program ended successfully.\n");
     /* leave the program with a success code */
     return 0;
